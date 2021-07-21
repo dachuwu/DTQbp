@@ -30,17 +30,49 @@ outbreak_model(
 )
 }
 \arguments{
-\item{r0isolated}{numeric reproduction number for isolated cases (must be >0)}
+\item{num.initial.cases}{number of initial cases}
 
-\item{disp.iso}{numeric dispersion parameter for isolated cases (must be >0)}
+\item{cap_gen}{maximum number of generations to simulate}
 
-\item{disp.com}{numeric dispersion parameter for non-isolated cases (must be >0)}
+\item{cap_max_days}{maximum number of days to simulate}
 
-\item{prop.ascertain}{numeric proportion of infectious contacts ascertained by contact tracing (must be 0<=x<=1)}
+\item{cap_cases}{maximum number of cases to simulate}
 
-\item{delay_shape}{numeric shape parameter of delay distribution}
+\item{r0isolated}{reproduction number of isolated cases (must be >0)}
 
-\item{delay_scale}{numeric scale parameter of delay distribution}
+\item{r0community}{reproduction number of active cases in the community (must be >0)}
+
+\item{disp.iso}{dispersion parameter for isolated cases (must be >0)}
+
+\item{disp.com}{dispersion parameter for active cases in the community  (must be >0)}
+
+\item{prop.asym}{proportion of asymptomatic cases}
+
+\item{relR.asym}{relative transmissibility of asymptomatic cases}
+
+\item{prop.ascertain}{ascertainment probability (probability of being contraced)}
+
+\item{detect_sen}{detection probability}
+
+\item{prop.presym}{proportion of pre-symptomatic transmission}
+
+\item{si_omega}{standard deviation of the generation interval}
+
+\item{incu_shape}{shape parameter of incubation period distribution}
+
+\item{incu_scale}{scale parameter of incubation period distribution}
+
+\item{delay_shape}{shape parameter of onset-to-test delay distribution}
+
+\item{delay_scale}{scale parameter of onset-to-test delay distribution}
+
+\item{delay_off}{offset of onset-to-test delay distribution}
+
+\item{quarant.days}{quarantine period (days)}
+
+\item{quarant.retro.days}{back-tracking period (days). When a contact is traced, s/he will be isolated if s/he had recall symptoms within the back-tracking period.}
+
+\item{save.case_data}{True/False (default) whether to export case line list data}
 }
 \value{
 data.table of cases by week, cumulative cases, and the effective reproduction number of the outreak
@@ -51,29 +83,6 @@ Run a single instance of the branching process model
 \examples{
 
 \dontrun{
-incfn <- dist_setup(dist_shape = 2.322737,dist_scale = 6.492272)
-# delay distribution sampling function
-delayfn <- dist_setup(2, 4)
-# generate initial cases
-case_data <- outbreak_setup(num.initial.cases = 5,
-                            incfn=incfn,
-                            delayfn = delayfn,
-                            k=1.95,
-                            prop.asym=0)
-# generate next generation of cases
-case_data <- outbreak_step(case_data = case_data,
-                           disp.iso = 1,
-                           disp.com = 0.16,
-                           r0isolated = 0,
-                           r0community = 2.5,
-                           prop.asym = 0,
-                           incfn = incfn,
-                           delayfn = delayfn,
-                           prop.ascertain = 0,
-                           k = 1.95,
-                           quarantine = FALSE)
+
 }
-}
-\author{
-Joel Hellewell
 }

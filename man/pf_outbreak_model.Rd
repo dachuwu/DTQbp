@@ -27,13 +27,13 @@ pf_outbreak_model(
 )
 }
 \arguments{
-\item{r0isolated}{numeric reproduction number for isolated cases (must be >0)}
+\item{r0isolated}{reproduction number for isolated cases (must be >0)}
 
-\item{disp.iso}{numeric dispersion parameter for isolated cases (must be >0)}
+\item{disp.iso}{dispersion parameter for isolated cases (must be >0)}
 
-\item{disp.com}{numeric dispersion parameter for non-isolated cases (must be >0)}
+\item{disp.com}{dispersion parameter for non-isolated cases (must be >0)}
 
-\item{prop.ascertain}{numeric proportion of infectious contacts ascertained by contact tracing (must be 0<=x<=1)}
+\item{prop.ascertain}{proportion of infectious contacts ascertained by contact tracing (must be 0<=x<=1)}
 
 \item{delay_shape}{numeric shape parameter of delay distribution}
 
