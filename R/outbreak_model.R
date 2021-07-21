@@ -1,9 +1,28 @@
 
 #' Run a single instance of the branching process model
-#' @author Joel Hellewell
-#' @inheritParams outbreak_step
-#' @param delay_shape numeric shape parameter of delay distribution
-#' @param delay_scale numeric scale parameter of delay distribution
+#' 
+#' @param num.initial.cases
+#' @param cap_gen
+#' @param cap_max_days
+#' @param cap_cases 
+#' @param r0isolated reproduction number of isolated cases (must be >0)
+#' @param r0community reproduction number of active cases in the community (must be >0)
+#' @param disp.iso dispersion parameter for isolated cases (must be >0)
+#' @param disp.com dispersion parameter for active cases in the community  (must be >0)
+#' @param prop.asym proportion of asymptomatic cases 
+#' @param relR.asym relative transmissibility of asymptomatic cases 
+#' @param prop.ascertain ascertainment probability (probability of being contraced)
+#' @param detect_sen detection probability
+#' @param prop.presym proportion of pre-symptomatic transmission
+#' @param si_omega standard deviation of the generation interval
+#' @param incu_shape shape parameter of incubation period distribution
+#' @param incu_scale scale parameter of incubation period distribution
+#' @param delay_shape shape parameter of onset-to-test delay distribution
+#' @param delay_scale scale parameter of onset-to-test delay distribution
+#' @param delay_off offset of onset-to-test delay distribution
+#' @param quarant.days quarantine period (days)
+#' @param quarant.retro.days back-tracking period (days). When a contact is traced, s/he will be isolated if s/he had recall symptoms within the back-tracking period.   
+#' @param save.case_data True/False (default) whether to export case line list data
 #'
 #' @return data.table of cases by week, cumulative cases, and the effective reproduction number of the outreak
 #' @export
